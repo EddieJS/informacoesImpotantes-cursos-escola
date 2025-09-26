@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linha do Tempo - Colégio XYZ</title>
+    <link rel="icon" type="image/png" href="logo_cbb_favicon.png">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+    
+    .logo {
+        display: block;
+        margin: 0 auto 20px auto;
+        max-width: 150px;
+        height: auto;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* A linha vertical central */
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: #0056b3; 
+        top: 0;
+        bottom: 0;
+        left: 50%; /* Posição central na versão desktop */
+        margin-left: -3px;
+    }
+
+    .event-container {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+    }
+
+    /* Os círculos em cada evento */
+    .event-container::after {
+        content: '';
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: white;
+        border: 4px solid #28a745; 
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    /* Lado esquerdo */
+    .left {
+        left: 0;
+    }
+
+    /* Lado direito */
+    .right {
+        left: 50%;
+    }
+
+    /* Seta do balão de texto (Lado Esquerdo) */
+    .left::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        right: 30px;
+        border: medium solid white;
+        border-width: 10px 0 10px 10px;
+        border-color: transparent transparent transparent white;
+    }
+
+    /* Seta do balão de texto (Lado Direito) */
+    .right::before {
+        content: " ";
+        height: 0;
+        position: absolute;
+        top: 22px;
+        width: 0;
+        z-index: 1;
+        left: 30px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    /* Os círculos nos lados direito e esquerdo */
+    .right::after {
+        left: -16px;
+    }
+
+    .content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    /* Botão de voltar */
+    .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff; 
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    /* === MEDIA QUERY PARA TELAS PEQUENAS (SMARTPHONES) === */
+    @media (max-width: 600px) {
+        /* A Linha do Tempo agora será alinhada à esquerda em vez de centralizada */
+        .timeline::after {
+            left: 31px;
+        }
+
+        .event-container {
+            width: 100%; /* Ocupa a largura total */
+            padding-left: 70px; /* Dá espaço para a linha vertical e o círculo */
+            padding-right: 25px;
+        }
+
+        .event-container::before {
+            border: none; /* Remove a seta de balão */
+        }
+
+        /* Alinha todos os elementos para a esquerda */
+        .left, .right {
+            left: 0%;
+        }
+
+        /* Ajusta o círculo para ficar na nova linha vertical */
+        .event-container::after {
+            left: 15px;
+            right: auto;
+        }
+
+        /* Remove a seta em mobile, pois o design de balão de fala não é necessário */
+        .right::before {
+            border: none;
+        }
+
+        .left::before {
+            border: none;
+        }
+        
+        .content {
+            padding: 15px;
+        }
+
+        .back-button {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo da Escola" class="logo">
+        <h1>Linha do Tempo Escolar</h1>
+        <div class="timeline">
+            <div class="event-container left">
+                <div class="content">
+                    <h2>Fundação da Escola (1995)</h2>
+                    <p>O Colégio XYZ foi fundado com o objetivo de oferecer uma educação de qualidade para a comunidade local. A primeira turma contava com 50 alunos e 10 professores.</p>
+                </div>
+            </div>
+
+            <div class="event-container right">
+                <div class="content">
+                    <h2>Expansão para o Ensino Médio (2005)</h2>
+                    <p>Devido ao sucesso do programa de Ensino Fundamental, a escola inaugurou a primeira turma do Ensino Médio, com um foco em preparação para o vestibular.</p>
+                </div>
+            </div>
+
+            <div class="event-container left">
+                <div class="content">
+                    <h2>Inauguração do Laboratório de Ciências (2010)</h2>
+                    <p>Em um investimento na área de ciências, a escola construiu um moderno laboratório para aulas práticas de biologia, física e química.</p>
+                </div>
+            </div>
+
+            <div class="event-container right">
+                <div class="content">
+                    <h2>Projeto "Horta Escolar" (2015)</h2>
+                    <p>O projeto foi um marco na área de sustentabilidade, incentivando alunos de todas as idades a aprender sobre o cultivo de alimentos de forma orgânica.</p>
+                </div>
+            </div>
+            
+        </div>
+        <a href="index.html" class="back-button">Voltar para a Página Principal</a>
+    </div>
+</body>
+</html>
